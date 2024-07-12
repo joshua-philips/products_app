@@ -20,14 +20,14 @@ class _CartPageState extends ConsumerState<CartPage> {
         left: 8,
         right: 8,
       ),
-      child: cartItems.length == 0
-          ? Center(child: Text("Got to the products page to add items to cart"))
+      child: cartItems.isEmpty
+          ? const Center(child: Text("Got to the products page to add items to cart"))
           : SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   ListView.builder(
-                      physics: NeverScrollableScrollPhysics(),
+                      physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       itemCount: cartItems.length,
                       itemBuilder: (context, index) => Dismissible(
@@ -39,7 +39,8 @@ class _CartPageState extends ConsumerState<CartPage> {
                             },
                             background: Container(
                               color: Colors.red,
-                              child: Align(
+                              child: const Align(
+                                alignment: Alignment.centerRight,
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   children: <Widget>[
@@ -60,7 +61,6 @@ class _CartPageState extends ConsumerState<CartPage> {
                                     ),
                                   ],
                                 ),
-                                alignment: Alignment.centerRight,
                               ),
                             ),
                             child: Padding(
@@ -73,7 +73,7 @@ class _CartPageState extends ConsumerState<CartPage> {
                                           product: cartItems[index]));
                                   Navigator.push(context, route);
                                 },
-                                leading: CircleAvatar(
+                                leading: const CircleAvatar(
                                   child: Icon(Icons.shopping_bag_outlined),
                                 ),
                                 title: Text(
@@ -89,7 +89,7 @@ class _CartPageState extends ConsumerState<CartPage> {
                               ),
                             ),
                           )),
-                  Text(
+                  const Text(
                     "Amount",
                     style: TextStyle(fontSize: 20),
                   ),
@@ -98,21 +98,21 @@ class _CartPageState extends ConsumerState<CartPage> {
                         .map((prod) => prod.price)
                         .reduce((value, item) => value + item)
                         .toStringAsFixed(2),
-                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8.0),
                     child: ElevatedButton(
                       onPressed: () {},
-                      child: Text('Checkout'),
                       style: ElevatedButton.styleFrom(
                         foregroundColor: Colors.white,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
                         backgroundColor: Colors.black,
-                        minimumSize: Size(double.infinity, 50),
+                        minimumSize: const Size(double.infinity, 50),
                       ),
+                      child: const Text('Checkout'),
                     ),
                   ),
                 ],

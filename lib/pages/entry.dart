@@ -43,25 +43,25 @@ class _EntryState extends ConsumerState<Entry> {
         selectedFontSize: 10,
         unselectedFontSize: 10,
         items: [
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.shopping_bag_outlined),
             label: 'Products',
           ),
           BottomNavigationBarItem(
             icon: Badge(
-              isLabelVisible: cartItems.length > 0,
+              isLabelVisible: cartItems.isNotEmpty,
               label: Text(cartItems.length.toString()),
               offset: const Offset(8, 8),
-              child: Icon(Icons.shopping_cart_outlined),
+              child: const Icon(Icons.shopping_cart_outlined),
             ),
             label: 'Cart',
           ),
           BottomNavigationBarItem(
             icon: Badge(
-              isLabelVisible: likes.length > 0,
+              isLabelVisible: likes.isNotEmpty,
               label: Text(likes.length.toString()),
               offset: const Offset(8, 8),
-              child: Icon(
+              child: const Icon(
                 Icons.favorite_border,
               ),
             ),

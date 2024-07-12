@@ -20,14 +20,15 @@ class _LikesPageState extends ConsumerState<LikesPage> {
         left: 8,
         right: 8,
       ),
-      child: likes.length == 0
-          ? Center(child: Text("Got to the products page to start liking!"))
+      child: likes.isEmpty
+          ? const Center(
+              child: Text("Got to the products page to start liking!"))
           : SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   ListView.builder(
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemCount: likes.length,
                     itemBuilder: (context, index) => Dismissible(
@@ -39,7 +40,8 @@ class _LikesPageState extends ConsumerState<LikesPage> {
                       },
                       background: Container(
                         color: Colors.red,
-                        child: Align(
+                        child: const Align(
+                          alignment: Alignment.centerRight,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: <Widget>[
@@ -60,7 +62,6 @@ class _LikesPageState extends ConsumerState<LikesPage> {
                               ),
                             ],
                           ),
-                          alignment: Alignment.centerRight,
                         ),
                       ),
                       child: Padding(
@@ -72,7 +73,7 @@ class _LikesPageState extends ConsumerState<LikesPage> {
                                     ProductPage(product: likes[index]));
                             Navigator.push(context, route);
                           },
-                          leading: CircleAvatar(
+                          leading: const CircleAvatar(
                             child: Icon(Icons.shopping_bag_outlined),
                           ),
                           title: Text(

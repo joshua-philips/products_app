@@ -69,35 +69,38 @@ class ProductPage extends ConsumerWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.all(8),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Text(
-                  product.title,
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.grey.shade600,
+            padding: const EdgeInsets.all(8),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.5),
+                  Text(
+                    product.title,
+                    style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.grey.shade600,
+                    ),
                   ),
-                ),
-                Text(
-                  product.price.toStringAsFixed(2),
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.grey.shade600,
+                  Text(
+                    product.price.toStringAsFixed(2),
+                    style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.grey.shade600,
+                    ),
                   ),
-                ),
-                Text(
-                  product.description,
-                  style: TextStyle(
-                    color: Colors.grey.shade600,
-                  ),
-                )
-              ],
+                  Text(
+                    product.description,
+                    style: TextStyle(
+                      color: Colors.grey.shade600,
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
         ],
@@ -105,7 +108,7 @@ class ProductPage extends ConsumerWidget {
       bottomNavigationBar: Container(
         height: 70,
         color: Colors.white,
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -146,19 +149,19 @@ class ProductPage extends ConsumerWidget {
                 ),
               ),
             ),
-            SizedBox(width: 20),
+            const SizedBox(width: 20),
             Expanded(
               child: ElevatedButton(
                 onPressed: () {},
-                child: Text('Buy for ${product.price}'),
                 style: ElevatedButton.styleFrom(
                   foregroundColor: Colors.white,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
                   backgroundColor: Colors.black,
-                  minimumSize: Size(double.infinity, 50),
+                  minimumSize: const Size(double.infinity, 50),
                 ),
+                child: Text('Buy for ${product.price}'),
               ),
             ),
           ],
